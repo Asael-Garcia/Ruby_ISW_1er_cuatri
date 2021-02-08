@@ -1,0 +1,75 @@
+
+#VARIABLES
+
+recargas = [[],[],[],[]]
+companias = ["\n1.- Telcel", "n\2.- Movistar", "\n3.- Unefon", "\n4.- AT&T"]
+menuPrincipal = ["\n1.- Recarga","\n2.- Reporte de recargas", "\n3.- Salir "]
+montos = [10, 20, 50, 100, 150, 200, 500]
+
+
+#FUNCIONES
+
+def mostrar_menu(arreglo)
+    for opcion in arreglo 
+        print (opcion)
+	end
+end
+def validar (mensaje)
+	bandera=true
+		begin
+			valor=gets.to_i(mensaje)
+			bandera=false
+		rescue
+			puts "Solamente se admiten numeros".center(50," ")
+		end
+	return valor
+end
+
+def registrar_recarga()
+	puts "Compañias"
+	mostrar_menu(companias)
+	puts "Elija una opcion (1 a 4):"
+	compania=gets.to_i
+	compania=validar
+	if compania >0 and compania <5
+		puts "Montos"
+		mostrar_menu(montos)
+		puts "Indique el monto que recargo: "
+		monto=gets.to_i
+		monto=validar  
+		if monto=!montos
+			recargas[compañia - 1].push(monto)
+		else
+			puts "Cantidad no valida"
+		end
+	else
+		puts "Operacion no valida"
+	end
+end
+
+def mostrar_recargas()
+	puts "Recargas realizadas"
+	puts "no hay no existe"
+end
+#CODIGO GENERAL
+
+eleccion=0
+while eleccion !=3
+
+	puts "Centro de recargas ULTRA".center(20," ")
+	mostrar_menu(menuPrincipal)
+	puts "Tu eleccion: "
+	eleccion = gets.to_i 
+	case eleccion
+		when 1
+			registrar_recarga()
+		when 2
+			mostrar_recargas()
+		when 3
+			puts "Hasta luego..........."
+		else
+			puts "Elija una opcion valida (1 a 3) "
+			continuar=gets.chomp
+	end
+end
+	
